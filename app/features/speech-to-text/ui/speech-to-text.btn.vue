@@ -64,11 +64,12 @@ const toggleRecording = () => {
 <template>
   <UButton
     :class="{ 'is-recording': isRecording }"
+    class="cursor-pointer w-20 justify-center"
     @click="toggleRecording"
-    size="lg"
-    color="secondary"
+    color="info"
+    variant="link"
   >
-    <UIcon v-if="!isRecording" name="heroicons:microphone" :size="20" />
-    <UIcon v-else name="material-symbols:stop" :size="20" />
+    <UIcon v-if="!isRecording" name="boxicons:microphone-filled" :size="30" />
+    <UIcon v-else name="material-symbols:stop" :size="30" />
   </UButton>
 </template>

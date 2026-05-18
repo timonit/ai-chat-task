@@ -18,7 +18,7 @@ useSeoMeta({
 
 <template>
   <UApp>
-    <UMain>
+    <UMain class="px-20">
       <NuxtPage />
     </UMain>
   </UApp>

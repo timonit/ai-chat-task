@@ -19,18 +19,19 @@ const setErrors = (newErrors: string[]) => {
 
 const addMessage = (result: ChatResult) => {
   result.choices.forEach(choice => {
-    messages.value.push(choice.message);
+    messages.value = [...messages.value, choice.message];
   });
 }
 
 const addUserMessage = (message: string) => {
   errors.value = [];
-  messages.value.push({ role: 'user', content: message });
+  messages.value = [...messages.value, { role: 'user', content: message }];
+  text.value = '';
 }
 </script>
 
 <template>
-  <div class="md:p-10 p-4 h-dvh flex flex-col gap-4 justify-end">
+  <div class="md:p-10 p-4 h-dvh flex flex-col gap-4 justify-end w-4/6">
     <MessageList :messages="messages" />
 
     <UPageList>

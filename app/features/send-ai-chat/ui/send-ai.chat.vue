@@ -35,31 +35,36 @@ const sendMessage = async () => {
 </script>
 
 <template>
-  <UForm @submit.prevent="sendMessage" class="flex flex-col md:flex-row items-start gap-2">
-    <UFormField help="Ctrl + Enter to send" class="w-full" :errors="errors">
-      <UTextarea
-        v-model="model"
-        placeholder="Type your message..."
-        :disabled="isSending"
-        class="w-full"
-        :rows="2"
-        help="Press Ctrl + Enter to send"
-        @keydown.ctrl.enter.prevent="sendMessage"
-      >
-        <template #trailing>
-          <slot name="textarea-append" :props="{ disabled: isSending }" />
-        </template>
-      </UTextarea>
-    </UFormField>
+  <UForm @submit.prevent="sendMessage" class="flex flex-col md:flex-row items-center gap-2 border-3 border-accented rounded-2xl">
+    <slot name="textarea-append" :props="{ disabled: isSending, class: 'h-full' }" />
 
-    <div class="flex justify-end w-full md:w-auto pt-1">
+    <UTextarea
+      v-model="model"
+      placeholder="Type your message..."
+      :disabled="isSending"
+      class="w-full border-0 "
+      variant="none"
+      :rows="1"
+      :maxrows="2"
+      size="xl"
+      color="error"
+      help="Press Ctrl + Enter to send"
+      @keydown.ctrl.enter.prevent="sendMessage"
+    >
+      <template #trailing>
+      </template>
+    </UTextarea>
+
+    <div class="flex justify-end items-stretch self-stretch w-full md:w-auto">
       <UButton
         type="submit"
         :disabled="disabled"
         :loading="isSending"
-        label="Send"
-        size="xl"
-      />
+        color="primary"
+        class="rounded-xl w-13 h-14 justify-center text-white"
+      >
+        <UIcon v-if="!isSending" name="weui:arrow-filled" :size="40" />
+      </UButton>
     </div>
 
   </UForm>
