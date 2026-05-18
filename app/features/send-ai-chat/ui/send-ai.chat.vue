@@ -24,8 +24,8 @@ const sendMessage = async () => {
     const result = await sendAiChat({ messages });
     emit('response', result);
   }
-  catch(error) {
-    errors.value = [error instanceof Error ? error.message : String(error)];
+  catch(err: any) {
+    errors.value = [err.message || err];
   }
   finally {
     model.value = '';
