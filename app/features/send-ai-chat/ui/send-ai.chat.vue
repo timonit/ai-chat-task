@@ -47,7 +47,7 @@ const sendMessage = async () => {
         @keydown.ctrl.enter.prevent="sendMessage"
       >
         <template #trailing>
-          <slot name="textarea-append" />
+          <slot name="textarea-append" :props="{ disabled: isSending }" />
         </template>
       </UTextarea>
     </UFormField>

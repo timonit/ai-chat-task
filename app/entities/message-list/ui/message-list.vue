@@ -12,7 +12,7 @@ const props = defineProps<MessageListProps>();
 <template>
   <div class="w-full px-3 rounded-lg overflow-auto">
 
-    <div class="min-h-[40dvh] overflow-y-auto p-4 space-y-4">
+    <div class="overflow-y-auto p-4 space-y-4">
       <div
         v-for="(message, index) in messages"
         :key="index"

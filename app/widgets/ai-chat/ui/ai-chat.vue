@@ -9,6 +9,7 @@ const text = ref('');
 const errors = ref<string[]>([]);
 
 const addText = (newText: string) => {
+  errors.value = [];
   text.value = text.value + newText;
 }
 
@@ -23,6 +24,7 @@ const addMessage = (result: ChatResult) => {
 }
 
 const addUserMessage = (message: string) => {
+  errors.value = [];
   messages.value.push({ role: 'user', content: message });
 }
 </script>
@@ -42,8 +44,8 @@ const addUserMessage = (message: string) => {
       v-model="text"
       v-model:errors="errors"
     >
-      <template #textarea-append>
-        <SpeechToTextBtn @transcribed="addText" @error="setErrors([$event])" />
+      <template #textarea-append="{ props }">
+        <SpeechToTextBtn @transcribed="addText" @error="setErrors([$event])" v-bind="props" />
       </template>
     </SendAiChat>
   </div>
