@@ -19,7 +19,7 @@ export async function speechToText(blob: Blob): Promise<string> {
 
     if (json && json.message) {
       // extract error message from the response, which may be nested in a specific format
-      const specificString = (json.message as string).slice(3);;
+      const specificString = (json.message as string).slice(3);
       const errorMsg = JSON.parse(specificString);
 
       if (errorMsg && errorMsg.error && errorMsg.error.message) {

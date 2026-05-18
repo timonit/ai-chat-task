@@ -7,7 +7,15 @@ export type SendAiChatInput = {
 export async function sendAiChat({ messages }: SendAiChatInput): Promise<ChatResult> {
   const res = await fetch('/api/chat', { method: 'POST', body: JSON.stringify(messages), headers: { 'Content-Type': 'application/json' } });
 
-  const response = await res.json();
+  const json = await res.json();
 
-  return response;
+  if (!res.ok) {
+    let message = 'Unknown error occurred during speech-to-text conversion.';
+
+    if (json && json.message) message = json.message;
+
+    throw new Error(message);
+  }
+
+  return json;
 }
