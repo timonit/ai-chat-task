@@ -1,4 +1,8 @@
+<script setup lang="ts">
+import { AiChat } from '~/widgets/ai-chat';
+
+</script>
+
 <template>
-  <div>
-  </div>
+  <AiChat />
 </template>
