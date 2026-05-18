@@ -37,11 +37,11 @@ const sendMessage = async () => {
 
 <template>
   <UForm @submit.prevent="sendMessage" class="flex flex-col md:flex-row items-start gap-2">
+    <UFormField help="Ctrl + Enter to send" class="w-full" :errors="errors">
+      <template #label>
+        <span v-for="err in errors" class="text-xs text-error">{{ err }}</span>
+      </template>
 
-    <UFormField v-if="errors" error="errors">
-    </UFormField>
-
-    <UFormField help="Ctrl + Enter to send" class="w-full">
       <UTextarea
         v-model="model"
         placeholder="Type your message..."
