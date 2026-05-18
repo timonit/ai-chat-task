@@ -12,7 +12,6 @@ const title = 'Nuxt Starter Template'
 
 useSeoMeta({
   title,
-  description,
   ogTitle: title,
 })
 </script>
